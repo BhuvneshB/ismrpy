@@ -52,7 +52,7 @@ def read_ismr(filename='', lat='', lon='', columns=None,addition=True, Ipp=350, 
         Iono_ht = ((RE / (RE + IPP)) * np.cos(E))
         Shi_pp = (np.pi / 2) - E - np.arcsin(Iono_ht)
         # % ---------------------------Satellite latitude and IPP Lat calculation
-        Phi_pp = np.sin(PHI_U) * np.cos(Shi_pp) + np.cos(PHI_U) * np.sin(Shi_pp) * np.cos(A)
+        Phi_pp = np.arcsin(np.sin(PHI_U) * np.cos(Shi_pp) + np.cos(PHI_U) * np.sin(Shi_pp) * np.cos(A))
         DLat_PP = np.rad2deg(Phi_pp)
         # %---------------------- Satellite longitude calculation
         TERM2 = ((np.sin(Shi_pp) * np.sin(A)) / np.cos(Phi_pp))
